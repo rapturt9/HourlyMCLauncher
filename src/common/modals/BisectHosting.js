@@ -11,61 +11,21 @@ const BisectHosting = () => {
   return (
     <Modal
       css={`
-        height: 360px;
+        height: 150px;
         width: 500px;
         font-size: 10px;
         line-height: 1.8;
       `}
-      title="We teamed up with BisectHosting"
+      title="Click the plus sign and add a server"
     >
       <Container>
-        <BisectHostingLogo size={70} hover />
         <h2
           css={`
             margin-top: 20px;
           `}
         >
-          Grab a server from our official partner{' '}
-          <span
-            css={`
-              font-weight: 800;
-            `}
-          >
-            BisectHosting
-          </span>{' '}
-          <span>for effortless modded server installs and updates.</span> New
-          customers can save{' '}
-          <span
-            css={`
-              color: ${props => props.theme.palette.colors.green};
-            `}
-          >
-            25%
-          </span>{' '}
-          off their first month using the promo code{' '}
-          <span
-            css={`
-              color: ${props => props.theme.palette.colors.green};
-            `}
-          >
-            GDL
-          </span>{' '}
-          at checkout.
+          The visit [server name].hourlymc.com on minecraft java{' '}
         </h2>
-        <a href="https://bisecthosting.com/gdl">
-          <Button
-            type="primary"
-            css={`
-              margin-top: 25px;
-            `}
-            onClick={() => {
-              ga.sendCustomEvent('BHClickAdLink');
-            }}
-          >
-            Go to BisectHosting.com &nbsp;
-            <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </Button>
-        </a>
       </Container>
     </Modal>
   );

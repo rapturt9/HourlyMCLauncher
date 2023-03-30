@@ -18,8 +18,9 @@ const AutoUpdatesNotAvailable = () => {
             margin-top: 20px;
           `}
         >
-          Please, update GDLauncher through your package manager or download the
-          new version from our website <a href="https://gdevs.io">here</a>
+          Please, update HourlyMCLauncher through your package manager or
+          download the new version from our website{' '}
+          <a href="https://www.hourlymc.com/">here</a>
         </div>
       </Container>
     </Modal>

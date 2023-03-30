@@ -38,7 +38,7 @@ const SocialButtons = () => {
         }
       `}
     >
-      <a href="https://discord.gdlauncher.com">
+      {/* <a href="https://discord.gdlauncher.com">
         <div>
           <FontAwesomeIcon icon={faDiscord} size="lg" />
         </div>
@@ -62,8 +62,8 @@ const SocialButtons = () => {
         <div>
           <FontAwesomeIcon icon={faInstagram} size="lg" />
         </div>
-      </a>
-      <a href="https://gdevs.io">
+      </a> */}
+      <a href="https://www.hourlymc.com/">
         <div>
           <FontAwesomeIcon icon={faGlobe} size="lg" />
         </div>

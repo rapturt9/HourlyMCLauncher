@@ -163,6 +163,7 @@ const General = () => {
   const updateAvailable = useSelector(state => state.updateAvailable);
   const showNews = useSelector(state => state.settings.showNews);
   const DiscordRPC = useSelector(state => state.settings.discordRPC);
+  // const DiscordRPC = false;
   const potatoPcMode = useSelector(state => state.settings.potatoPcMode);
   const concurrentDownloads = useSelector(
     state => state.settings.concurrentDownloads
@@ -594,7 +595,7 @@ const General = () => {
         >
           <HorizontalLogo
             size={200}
-            onClick={() => dispatch(openModal('ChangeLogs'))}
+            onClick={/* () => dispatch(openModal('ChangeLogs')) */ null}
           />{' '}
           <div
             css={`

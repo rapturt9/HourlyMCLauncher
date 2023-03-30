@@ -189,46 +189,6 @@ const ChangeLogs = () => {
             src={isChristmas ? UpdateIllustrationChristmas : UpdateIllustration}
             alt="New Version"
           />
-          <div
-            css={`
-              margin-top: 20px;
-              color: ${props => props.theme.palette.text.third};
-              span {
-                color: ${props => props.theme.palette.text.primary};
-                cursor: pointer;
-                text-decoration: underline;
-              }
-            `}
-          >
-            If you appreciate our work, please consider supporting us through a
-            donation or grab a server from our official partner{' '}
-            <span onClick={openBisectModal}>BisectHosting</span>
-          </div>
-          <div
-            css={`
-              display: flex;
-              align-items: center;
-              justify-content: start;
-              margin-bottom: 20px;
-              margin-top: 20px;
-              a:nth-child(1) {
-                margin-right: 20px;
-              }
-              img {
-                border-radius: 30px;
-                height: 40px;
-                cursor: pointer;
-                transition: transform 0.2s ease-in-out;
-                &:hover {
-                  transform: scale(1.05);
-                }
-              }
-            `}
-          >
-            <a href="https://ko-fi.com/gdlauncher">
-              <img src={KoFiButton} alt="Ko-Fi" />
-            </a>
-          </div>
           <a
             css={`
               margin-top: 20px;

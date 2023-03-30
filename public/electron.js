@@ -26,6 +26,10 @@ const UserAgent = require('user-agents');
 const nsfw = require('./native/nsfw');
 const napi = require('./native/napi');
 
+try {
+  require('electron-reloader')(module);
+} catch {}
+
 // console.log(napi.fibonacci(10));
 
 const fs = fss.promises;
@@ -78,10 +82,10 @@ const edit = [
   ...(process.platform === 'darwin'
     ? [
         {
-          label: 'GDLauncher',
+          label: 'HourlyMCLauncher',
           submenu: [
             {
-              label: 'About GDLauncher',
+              label: 'About HourlyMCLauncher',
               role: 'about'
             },
             { type: 'separator' },
@@ -92,7 +96,7 @@ const edit = [
             },
             { type: 'separator' },
             {
-              label: 'Hide GDLauncher',
+              label: 'Hide HourlyMCLauncher',
               accelerator: 'Command+H',
               role: 'hide'
             },
@@ -107,7 +111,7 @@ const edit = [
             },
             { type: 'separator' },
             {
-              label: 'Quit GDLauncher',
+              label: 'Quit HourlyMCLauncher',
               accelerator: 'Command+Q',
               click: () => {
                 app.quit();
@@ -320,22 +324,22 @@ function createWindow() {
         ...requestHeaders
       } = details.requestHeaders;
       if (xSkipOrigin !== 'skip') {
-        requestHeaders.Origin = 'https://gdevs.io';
+        requestHeaders.Origin = 'https://www.hourlymc.com';
       }
       callback({ cancel: false, requestHeaders });
     }
   );
 
-  const RESOURCE_DIR = isDev ? __dirname : path.join(__dirname, '../build');
+  const RESOURCE_DIR = isDev ? __dirname : path.join(__dirname, '../public');
 
-  const iconPath = path.join(RESOURCE_DIR, 'logo_32x32.png');
+  const iconPath = path.join(RESOURCE_DIR, 'icon.png');
 
   const nimage = nativeImage.createFromPath(iconPath);
 
   tray = new Tray(nimage);
   const trayMenuTemplate = [
     {
-      label: 'GDLauncher',
+      label: 'HourlyMCLauncher',
       enabled: false
     },
     {
@@ -346,7 +350,7 @@ function createWindow() {
 
   const trayMenu = Menu.buildFromTemplate(trayMenuTemplate);
   tray.setContextMenu(trayMenu);
-  tray.setToolTip('GDLauncher');
+  tray.setToolTip('HourlyMCLauncher');
   tray.on('double-click', () => mainWindow.show());
 
   mainWindow.loadURL(
@@ -354,7 +358,7 @@ function createWindow() {
       ? 'http://localhost:3000'
       : `file://${path.join(__dirname, '../build/index.html')}`,
     {
-      userAgent: 'GDLauncher'
+      userAgent: 'HourlyMCLauncher'
     }
   );
   if (isDev) {
@@ -850,6 +854,7 @@ ipcMain.handle('start-listener', async (e, dirPath) => {
     }
     watcher = await nsfw(dirPath, events => {
       log.log(`Detected ${events.length} events from listener`);
+      log.log(JSON.stringify(events));
       mainWindow.webContents.send('listener-events', events);
     });
     log.log('Started listener');

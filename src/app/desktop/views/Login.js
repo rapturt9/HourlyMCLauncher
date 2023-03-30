@@ -194,33 +194,6 @@ const Login = () => {
               <HorizontalLogo size={200} />
             </Header>
             <Form>
-              <div>
-                <Input
-                  placeholder="Email"
-                  value={email}
-                  onChange={({ target: { value } }) => setEmail(value)}
-                />
-              </div>
-              <div>
-                <Input
-                  placeholder="Password"
-                  type="password"
-                  value={password}
-                  onChange={({ target: { value } }) => setPassword(value)}
-                />
-              </div>
-              {loginFailed && (
-                <LoginFailMessage>{loginFailed?.message}</LoginFailMessage>
-              )}
-              <LoginButton color="primary" onClick={authenticate}>
-                Sign In
-                <FontAwesomeIcon
-                  css={`
-                    margin-left: 6px;
-                  `}
-                  icon={faArrowRight}
-                />
-              </LoginButton>
               <MicrosoftLoginButton
                 color="primary"
                 onClick={authenticateMicrosoft}
@@ -254,7 +227,7 @@ const Login = () => {
                   css={`
                     cursor: pointer;
                   `}
-                  onClick={() => dispatch(openModal('ChangeLogs'))}
+                  onClick={/* () => dispatch(openModal('ChangeLogs')) */ null}
                 >
                   v{version}
                 </div>
@@ -267,7 +240,7 @@ const Login = () => {
                 Sign in with your Mojang Account. By doing so, you accept all
                 our policies and terms stated below.
               </p>
-              <div
+              {/* <div
                 css={`
                   margin-top: 20px;
                   font-size: 10px;
@@ -304,7 +277,7 @@ const Login = () => {
                 >
                   Acceptable Use Policy
                 </span>
-              </div>
+              </div> */}
             </Footer>
           </LeftSide>
           <Background transitionState={transitionState}>

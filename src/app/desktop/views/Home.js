@@ -9,6 +9,8 @@ import axios from 'axios';
 // import { promises as fs } from 'fs';
 // import path from 'path';
 import Instances from '../components/Instances';
+import Onboarding from './Onboarding';
+import Servers from '../components/Servers';
 import News from '../components/News';
 import { openModal } from '../../../common/reducers/modals/actions';
 import {
@@ -55,7 +57,7 @@ const Home = () => {
       const appVersion = await ipcRenderer.invoke('getAppVersion');
       if (lastUpdateVersion !== appVersion) {
         dispatch(updateLastUpdateVersion(appVersion));
-        dispatch(openModal('ChangeLogs'));
+        // dispatch(openModal('ChangeLogs'));
       }
       try {
         const { data } = await axios.get(
@@ -76,7 +78,7 @@ const Home = () => {
 
   return (
     <div>
-      <News news={news} />
+      {/* <News news={news} /> */}
       {annoucement ? (
         <div
           css={`
@@ -91,6 +93,7 @@ const Home = () => {
         </div>
       ) : null}
       <Instances />
+      <Servers />
       <AddInstanceIcon type="primary" onClick={() => openAddInstanceModal(0)}>
         <FontAwesomeIcon icon={faPlus} />
       </AddInstanceIcon>

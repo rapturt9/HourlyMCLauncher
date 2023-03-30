@@ -10,7 +10,7 @@ const defaultValue = {
   details: 'Idle',
   startTimestamp: initialAppStartup,
   largeImageKey: 'default_big',
-  largeImageText: 'GDLauncher - A Custom Minecraft Launcher',
+  largeImageText: 'HourlyMCLauncher - A Custom Minecraft Launcher',
   instance: false
 };
 

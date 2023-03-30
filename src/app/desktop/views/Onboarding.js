@@ -25,17 +25,18 @@ const Background = styled.div`
 const scrollToRef = ref =>
   ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+const last = 2;
 const Home = () => {
   const dispatch = useDispatch();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [initScrolled, setInitScrolled] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [initScrolled, setInitScrolled] = useState(true);
   const account = useSelector(_getCurrentAccount);
 
-  const firstSlideRef = useRef(null);
+  // const firstSlideRef = useRef(null);
   const secondSlideRef = useRef(null);
   const thirdSlideRef = useRef(null);
-  const forthSlideRef = useRef(null);
-  const fifthSlideRef = useRef(null);
+  /* const forthSlideRef = useRef(null);
+  const fifthSlideRef = useRef(null); */
   const executeScroll = type => {
     if (currentSlide + type < 0 || currentSlide + type > 5) return;
     setCurrentSlide(currentSlide + type);
@@ -56,21 +57,21 @@ const Home = () => {
         scrollToRef(fifthSlideRef);
         break;
       default:
-        scrollToRef(firstSlideRef);
+        scrollToRef(secondSlideRef);
         break;
     }
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    /* setTimeout(() => {
       setInitScrolled(true);
       executeScroll(1);
-    }, 4800);
+    }, 4800); */
   }, []);
 
   return (
     <Background>
-      <div
+      {/* <div
         ref={firstSlideRef}
         css={`
           height: 100%;
@@ -104,17 +105,18 @@ const Home = () => {
             <source src={backgroundVideo} type="video/webm" />
           </video>
         </div>
-      </div>
+  </div> */}
       <div
         ref={secondSlideRef}
         css={`
-          height: 100%;
-          width: 100%;
-          background: ${props => props.theme.palette.grey[800]};
+          height: 100vh;
+          width: 100vw;
+          background: ${props => props.theme.palette.grey[700]};
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          color: ${props => props.theme.palette.text.primary};
         `}
       >
         <div
@@ -125,19 +127,20 @@ const Home = () => {
             padding: 0 120px;
           `}
         >
-          {account.selectedProfile.name}, welcome to GDLauncher!
+          {account.selectedProfile.name}, welcome to HourlyMCLauncher!
         </div>
       </div>
       <div
         ref={thirdSlideRef}
         css={`
-          height: 100%;
-          width: 100%;
+          height: 100vh;
+          width: 100vw;
           background: ${props => props.theme.palette.grey[700]};
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          color: ${props => props.theme.palette.text.primary};
         `}
       >
         <div
@@ -148,25 +151,13 @@ const Home = () => {
             margin: 20% 10%;
           `}
         >
-          GDlauncher is completely free and open source. <br />
-          If you want to support us, consider renting a server on BisectHosting,
-          our official partner!
-          <br />
-          <br />
-          <div
-            css={`
-              cursor: pointer;
-            `}
-          >
-            <BisectHosting
-              showPointerCursor
-              size={100}
-              onClick={() => dispatch(openModal('BisectHosting'))}
-            />
-          </div>
+          You can add local minecraft instances and spin up servers from the
+          launcher <br />
+          Simply choose a server name when creating it and visit
+          [servername].hourlymc.com to join the server when ready
         </div>
       </div>
-      <div
+      {/* <div
         ref={forthSlideRef}
         css={`
           height: 100%;
@@ -235,8 +226,8 @@ const Home = () => {
             frameBorder="0"
             title="discordFrame"
           />
-        </div>
-      </div>
+</div>
+      </div> */}
       {currentSlide !== 0 && currentSlide !== 1 && initScrolled && (
         <div
           css={`
@@ -283,7 +274,7 @@ const Home = () => {
             }
           `}
           onClick={() => {
-            if (currentSlide === 4) {
+            if (currentSlide === last) {
               dispatch(push('/home'));
             } else {
               executeScroll(1);
@@ -291,7 +282,9 @@ const Home = () => {
           }}
         >
           <FontAwesomeIcon
-            icon={currentSlide === 4 ? faLongArrowAltRight : faLongArrowAltDown}
+            icon={
+              currentSlide === last ? faLongArrowAltRight : faLongArrowAltDown
+            }
           />
         </div>
       )}

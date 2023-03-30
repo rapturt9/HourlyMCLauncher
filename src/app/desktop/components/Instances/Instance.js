@@ -187,9 +187,14 @@ const Instance = ({ instanceName }) => {
   }, [instance.background, instancesPath, instanceName]);
 
   const startInstance = () => {
-    if (isInQueue || isPlaying) return;
-    dispatch(addStartedInstance({ instanceName }));
-    dispatch(launchInstance(instanceName));
+    // dispatch(openModal('InstanceStartupAd', { instanceName }));
+
+    if (isInQueue || isPlaying) {
+      dispatch(openModal('InstanceStartupAd', { instanceName }));
+    } else {
+      dispatch(addStartedInstance({ instanceName }));
+      dispatch(launchInstance(instanceName));
+    }
   };
   const openFolder = () => {
     ipcRenderer.invoke('openFolder', path.join(instancesPath, instance.name));
@@ -304,7 +309,7 @@ const Instance = ({ instanceName }) => {
                   </div>
                 )}
                 {isInQueue && 'In Queue'}
-                {!isInQueue && !isPlaying && <span>PLAY</span>}
+                {!isInQueue && !isPlaying && <span>PAY</span>}
               </>
             )}
           </HoverContainer>

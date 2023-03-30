@@ -137,7 +137,7 @@ export default function Settings() {
           <SettingsTitle>Game Settings</SettingsTitle>
           <SettingsButton>Graphic Settings</SettingsButton>
           <SettingsButton>Sound Settings</SettingsButton> */}
-          <div
+          {/* <div
             css={`
               align-items: left;
               justify-content: left;
@@ -148,7 +148,7 @@ export default function Settings() {
               margin-bottom: 30px;
             `}
           >
-            <span
+           <span
               css={`
                 font-weight: bold;
                 font-size: 16px;
@@ -222,8 +222,8 @@ export default function Settings() {
               >
                 Acceptable Use Policy
               </span>
-            </div>
-          </div>
+              </div>
+              </div> */}
         </SideMenu>
         <SettingsContainer>
           <SettingsColumn>

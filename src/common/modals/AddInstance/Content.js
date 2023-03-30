@@ -12,6 +12,7 @@ import { Spin, Radio } from 'antd';
 import CurseForgeModpacks from './CurseForgeModpacks';
 import FTBModpacks from './FTBModpacks';
 import Import from './Import';
+import AddServer from './AddServer';
 import NewInstance from './NewInstance';
 import minecraftIcon from '../../assets/minecraftIcon.png';
 import curseForgeIcon from '../../assets/curseforgeIcon.webp';
@@ -49,6 +50,8 @@ const Content = ({
       setVersion={setVersion}
       setStep={setStep}
       setModpack={setModpack}
+    />,
+    <AddServer
     />
   ];
 
@@ -122,9 +125,20 @@ const Content = ({
                       css={`
                         margin-right: 4px;
                         cursor: pointer;
+                        width: 20px;
                       `}
                     />
                     Import Zip
+                  </Radio.Button>
+                  <Radio.Button value={4}>
+                    <FontAwesomeIcon
+                      icon={faArchive}
+                      css={`
+                        margin-right: 4px;
+                        cursor: pointer;
+                      `}
+                    />
+                    Add Vanilla 1.19.2 Server
                   </Radio.Button>
                 </Radio.Group>
               </div>

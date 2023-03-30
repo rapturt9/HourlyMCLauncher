@@ -8,8 +8,11 @@ const { pipeline } = require('stream');
 const fse = require('fs-extra');
 const electronBuilder = require('electron-builder');
 const dotenv = require('dotenv');
+const electron_notarize = require('electron-notarize');
 
 dotenv.config();
+
+const macArch = 'x64'; // arm64 or x64
 
 const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
@@ -111,21 +114,21 @@ if (process.platform === 'win32') {
 } else if (process.platform === 'linux') {
   sevenZipPath = 'node_modules/7zip-bin/linux/x64/7za';
 } else if (process.platform === 'darwin') {
-  sevenZipPath = 'node_modules/7zip-bin/mac/x64/7za';
+  sevenZipPath = `node_modules/7zip-bin/mac/arm64/7za`;
 }
 
 extraFiles.push({
   from: sevenZipPath,
   to: './'
 });
-
+const appId = 'com.hourlymc.HourlyMCLauncher';
 const commonConfig = {
   publish: 'never',
   config: {
     generateUpdatesFilesForAllChannels: true,
     npmRebuild: false,
-    productName: 'GDLauncher',
-    appId: 'org.gorilladevs.GDLauncher',
+    productName: 'HourlyMCLauncher',
+    appId,
     files: [
       '!node_modules/**/*',
       'build/**/*',
@@ -164,6 +167,8 @@ const commonConfig = {
       include: './public/installer.nsh'
     },
     mac: {
+      hardenedRuntime: true,
+      gatekeeperAssess: false,
       entitlements: './entitlements.mac.plist',
       entitlementsInherit: './entitlements.mac.plist'
     },
@@ -182,9 +187,9 @@ const commonConfig = {
     },
     protocols: [
       {
-        name: 'gdlauncher',
+        name: 'hourlymc',
         role: 'Viewer',
-        schemes: ['gdlauncher']
+        schemes: ['hourlymc']
       }
     ]
   },
@@ -198,7 +203,7 @@ const commonConfig = {
     win: [type === 'setup' ? 'nsis:x64' : 'zip:x64']
   }),
   ...(process.platform === 'darwin' && {
-    mac: type === 'setup' ? ['dmg:x64'] : []
+    mac: type === 'setup' ? [`dmg:${macArch}`] : []
   })
 };
 
@@ -257,6 +262,30 @@ const main = async () => {
   );
 
   await fse.remove(releasesFolder);
+
+  console.log('afterSign hook triggered');
+
+  const appPath =
+    '/Users/ram/Documents/GitHub/HourlyMCLauncher/deploy/HourlyMCLauncher-mac-setup.dmg';
+  if (!fs.existsSync(appPath)) {
+    console.log('skip');
+    return;
+  }
+
+  console.log(`Notarizing ${appId} found at ${appPath}`);
+
+  try {
+    await electron_notarize.notarize({
+      appBundleId: appId,
+      appPath,
+      appleId: process.env.APPLE_ID,
+      appleIdPassword: process.env.APPLE_ID_PASSWORD
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.log(`Done notarizing ${appId}`);
 };
 
 main().catch(err => {

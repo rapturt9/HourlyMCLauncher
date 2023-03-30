@@ -1,10 +1,11 @@
 # GDLauncher
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
-[![GitHub issues](https://img.shields.io/github/issues-raw/gorilla-devs/GDLauncher.svg)](https://github.com/gorilla-devs/GDLauncher/issues) 
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/gorilla-devs/GDLauncher.svg)](https://github.com/gorilla-devs/GDLauncher/pulls) 
+
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![GitHub issues](https://img.shields.io/github/issues-raw/gorilla-devs/GDLauncher.svg)](https://github.com/gorilla-devs/GDLauncher/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/gorilla-devs/GDLauncher.svg)](https://github.com/gorilla-devs/GDLauncher/pulls)
 ![Discord](https://img.shields.io/discord/398091532881756161.svg)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/gorilla-devs/GDLauncher.svg) 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/gorilla-devs/GDLauncher.svg)
 ![](https://img.shields.io/github/release/gorilla-devs/GDLauncher.svg?style=flat)
 ![Github All Releases](https://img.shields.io/github/downloads/gorilla-devs/GDLauncher/total.svg)
 
@@ -26,9 +27,9 @@
   - [🚀 Getting Started](#-getting-started)
   - [🎮 Download](#-download)
   - [🎨 Features](#-features)
-      - [Our features:](#our-features)
-      - [You can also:](#you-can-also)
-      - [Some of the features we are still working on are:](#some-of-the-features-we-are-still-working-on-are)
+    - [Our features:](#our-features)
+    - [You can also:](#you-can-also)
+    - [Some of the features we are still working on are:](#some-of-the-features-we-are-still-working-on-are)
   - [💾 Compilation](#-compilation)
     - [⚙️ Requirements](#️-requirements)
     - [▶️ Steps](#️-steps)
@@ -38,6 +39,7 @@
   - [❤️ Author](#️-author)
   - [📜 History](#-history)
   - [🎓 License](#-license)
+
   </details>
 
 <p align="center">

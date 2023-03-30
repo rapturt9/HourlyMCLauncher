@@ -18,7 +18,6 @@ import {
   updateUpdateAvailable,
   isNewVersionAvailable
 } from '../../../common/reducers/actions';
-import BisectHosting from '../../../ui/BisectHosting';
 import Logo from '../../../ui/Logo';
 import ga from '../../../common/utils/analytics';
 
@@ -171,50 +170,26 @@ const SystemNavbar = () => {
       }}
     >
       {!isOsx && (
-        <>
-          <div
+        <div
+          css={`
+            cursor: auto !important;
+            -webkit-app-region: drag;
+            margin-left: 10px;
+          `}
+        >
+          <a
+            href="https://www.hourlymc.com/"
+            rel="noopener noreferrer"
             css={`
-              cursor: auto !important;
-              -webkit-app-region: drag;
-              margin-left: 10px;
+              margin-top: 5px;
+              margin-right: 5px;
+              -webkit-app-region: no-drag;
             `}
           >
-            <a
-              href="https://gdevs.io/"
-              rel="noopener noreferrer"
-              css={`
-                margin-top: 5px;
-                margin-right: 5px;
-                -webkit-app-region: no-drag;
-              `}
-            >
-              <Logo size={35} pointerCursor />
-            </a>
-            <DevtoolButton />
-          </div>
-          <div
-            css={`
-              display: flex;
-              height: 100%;
-            `}
-          >
-            <div
-              css={`
-                white-space: nowrap;
-              `}
-            >
-              Partnered with &nbsp;&nbsp;
-            </div>
-            <BisectHosting
-              showPointerCursor
-              onClick={() => {
-                ga.sendCustomEvent('BHAdViewNavbar');
-                dispatch(openModal('BisectHosting'));
-              }}
-            />
-            {/* <PulsatingCircle /> */}
-          </div>
-        </>
+            <Logo size={35} pointerCursor />
+          </a>
+          <DevtoolButton />
+        </div>
       )}
       <Container os={isOsx}>
         {!isOsx ? (
@@ -288,35 +263,20 @@ const SystemNavbar = () => {
         )}
       </Container>
       {isOsx && (
-        <>
-          <div
+        <div>
+          <DevtoolButton />
+          <a
+            href="https://www.hourlymc.com/"
+            rel="noopener noreferrer"
             css={`
-              display: flex;
-              height: 100%;
+              margin-top: 5px;
+              margin-right: 5px;
+              -webkit-app-region: no-drag;
             `}
           >
-            Partnered with &nbsp;&nbsp;
-            <BisectHosting
-              showPointerCursor
-              onClick={() => dispatch(openModal('BisectHosting'))}
-            />
-            {/* <PulsatingCircle /> */}
-          </div>
-          <div>
-            <DevtoolButton />
-            <a
-              href="https://gdevs.io/"
-              rel="noopener noreferrer"
-              css={`
-                margin-top: 5px;
-                margin-right: 5px;
-                -webkit-app-region: no-drag;
-              `}
-            >
-              <Logo size={35} pointerCursor />
-            </a>
-          </div>
-        </>
+            <Logo size={35} pointerCursor />
+          </a>
+        </div>
       )}
     </MainContainer>
   );
